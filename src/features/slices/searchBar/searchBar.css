@@ -2,7 +2,7 @@
     background-color: rgb(245, 245, 245);
     border: none;
     padding: 1rem;
-    min-width: 25rem;
+    width: 28rem;
     height: 2rem;
     border-radius: .5rem;
 }
@@ -20,4 +20,16 @@
    height: 1.5rem;
    width: 1.5rem;
    margin-top: .15rem;
+}
+
+@media only screen and (max-width: 960px) {
+    .searchBar {
+        max-width: 20rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .searchBarContainer {
+        display: none;
+    }
 }

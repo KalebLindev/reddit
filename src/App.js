@@ -1,15 +1,17 @@
 import React from 'react';
 import './App.css';
 import NavBar from './features/components/navBar/NavBar';
-import Posts from './features/components/posts/Posts';
+import PostsSection from './features/components/postsSection/PostsSection';
 import SubReddits from './features/components/subReddits/SubReddits';
 
 function App() {
   return (
     <div className="App">
       <NavBar />
-      <Posts />
-      <SubReddits />
+      <div className='main-content'>
+        <PostsSection />
+        <SubReddits />
+      </div>
     </div>
   );
 }
