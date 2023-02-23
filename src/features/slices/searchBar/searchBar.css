@@ -1,0 +1,23 @@
+.searchBar {
+    background-color: rgb(245, 245, 245);
+    border: none;
+    padding: 1rem;
+    min-width: 25rem;
+    height: 2rem;
+    border-radius: .5rem;
+}
+
+.searchBar:focus {
+    outline: 1.75px blue solid
+}
+
+.searchBarContainer {
+    display: flex;
+    gap: 1rem;
+}
+
+.searchBarIcon {
+   height: 1.5rem;
+   width: 1.5rem;
+   margin-top: .15rem;
+}

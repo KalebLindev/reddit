@@ -1,0 +1,30 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+header {
+    box-shadow: 0 .5rem .5rem rgb(227, 227, 227)
+}
+
+.navBar {
+    text-transform: uppercase;
+    width: 65%;
+    height: 3.5rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 15rem;
+}
+
+.navBarIcon {
+   height: 2rem;
+   width: 2rem;
+}
+
+.navBarLeft {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
