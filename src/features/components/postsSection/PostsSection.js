@@ -1,8 +1,17 @@
 import './postsSection.css'
-import SinglePost from '../SinglePost/SinglePost'
+import SinglePost from '../singlePost/SinglePost'
 
 const PostsSection = () => {
-    return < SinglePost/>
+    return (
+        <section className='post-section'>
+            <SinglePost/>
+            <SinglePost/>
+            <SinglePost/>
+            <SinglePost/>
+            <SinglePost/>
+            <SinglePost/>
+        </section>
+    )
 }
 
 export default PostsSection
