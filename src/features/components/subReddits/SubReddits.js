@@ -21,7 +21,7 @@ const SubReddits = () => {
             <section className='subreddits-section'>
                 <h2>SUBREDDITS</h2>
                 {subReddits.map((each, index) => {
-                    return <SingleSubReddit name={each} key={index}/>
+                    return <SingleSubReddit name={each.name} img={each.img} key={index}/>
                 })}
             </section>
         </div>
