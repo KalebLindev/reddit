@@ -1,6 +1,6 @@
 import './navBar.css'
 import { FaReddit } from 'react-icons/fa'
-import SearchBar from '../../slices/searchBar/SearchBar'
+import SearchBar from '../searchBar/SearchBar'
 
 const NavBar = () => {
     return (
