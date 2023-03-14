@@ -6,6 +6,7 @@
     /* height: 40rem; */
     border-radius: .25rem;
     min-width: 338.961px;;
+    position: relative;
 }
 
 .subreddits-section h2 {
@@ -20,4 +21,30 @@
     align-items: flex-start;
     width: 80%;
     margin: 0 auto;
+}
+
+
+@media only screen and (min-width: 668px) {
+    .subreddits-container {
+        display: none;
+        position: absolute;
+        left: -350px;
+        transition: left linear .3s;
+    }
+}
+
+@media only screen and (min-width: 922px) {
+    .subreddits-container {
+        display: none;
+        height: 1800px;
+    }
+}
+
+@media only screen and (min-width: 1100px) {
+    .subreddits-container {
+        display: block;
+        position: relative;
+        left: 0;
+        transition: 0s;
+    }
 }

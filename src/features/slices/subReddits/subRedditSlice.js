@@ -33,7 +33,7 @@ export const fetchSubReddits = createAsyncThunk('fetch/subReddits', async () => 
     const data = jsonResponse.data
     const dataList = data.children
     const names = dataList.map((reddit) => {
-        // console.log(reddit)
+        console.log(reddit)
         return {
             name: reddit.data.subreddit,
             img: reddit.data.thumbnail

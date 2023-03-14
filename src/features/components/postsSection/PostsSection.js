@@ -13,7 +13,6 @@ const PostsSection = () => {
                     <SinglePost title={post.title} text={post.text} img={post.img} author={post.author} timeAgo={post.timeSince} comments={post.comments} upVotes={post.upVotes} downVotes={post.downVotes} key={index}/>
                 )
             })}
-
         </section>
     )
 }

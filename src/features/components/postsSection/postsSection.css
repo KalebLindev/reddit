@@ -3,3 +3,9 @@
     flex-grow: 2;
     min-width: 1094.040px;
 }
+
+@media only screen and (min-width: 668px) {
+    .post-section {
+        min-width: 650px;
+    }
+}

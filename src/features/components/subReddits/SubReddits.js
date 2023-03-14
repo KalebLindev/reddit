@@ -23,7 +23,7 @@ const SubReddits = () => {
         dispatch(fetchActiveRedditPosts('home'))
         postsCount++
     }, [])
-    
+
     return (
         <div className='subreddits-container'>
             <section className='subreddits-section'>
@@ -37,3 +37,22 @@ const SubReddits = () => {
 }
 
 export default SubReddits
+
+export const toggleModal = () => {
+    const target = document.querySelector('.subreddits-container')
+        target.style.display = 'block'
+        setTimeout(() => {
+            document.querySelector('.post-section').addEventListener('click', () => {
+                if(document.querySelector('body').style.width >= '1100px') {
+                    target.style.left = '0px'
+                }
+
+                if(target.style.left === '15px') {
+                    target.style.left = '-350px'
+                }
+            })
+        
+        target.style.left = target.style.left === '15px'  ? '-350px' : '15px'
+        },100)
+    
+}
