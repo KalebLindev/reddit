@@ -6,9 +6,14 @@
     box-shadow: 0 .5rem .5rem rgb(227, 227, 227);
     border-radius: .25rem;
     max-width: 1094.040px;
+    transition: box-shadow linear .10s;
 }
 
-.post-information, .post-content {
+.post:hover {
+    box-shadow: 0 .7rem .5rem rgb(223, 223, 223);
+}
+
+.post-content {
     display: flex;
     gap: 2rem;
 }
@@ -25,6 +30,14 @@
     height: 100%;
 }
 
+.up-votes:hover {
+    color:  green
+}
+
+.down-votes:hover {
+    color: red;
+}
+
 .post-content {
     flex-direction: column;
     min-height: 6rem;
@@ -38,15 +51,27 @@
 
 .border-line {
     border-top: 1px black solid;
-    width: 97.5%;
+    width: 100%;
 
 }
 
 .post-information {
+    display: flex;
     justify-content: space-between;
-    margin: 0 auto;
     min-height: 3rem;
-    width: 95%;
+    width: 100%;
+}
+
+.author {
+    text-align: left;
+    width: 15rem;
+    order: 1
+}
+
+.time-ago {
+    text-align: center;
+    order: 2;
+    margin-right: 10rem;
 }
 
 .comment-icon-section {
@@ -54,6 +79,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
+    order: 3
 }
 
 .comment-icon-section span {

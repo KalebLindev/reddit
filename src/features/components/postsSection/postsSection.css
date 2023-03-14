@@ -1,4 +1,5 @@
 .post-section {
     background-color: white;
     flex-grow: 2;
+    min-width: 1094.040px;
 }

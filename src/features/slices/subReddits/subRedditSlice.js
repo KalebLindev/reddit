@@ -4,7 +4,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 export const subRedditsSlice = createSlice({
     name: 'allSubReddits',
     initialState: {
-        subReddits: []
+        subReddits: [{name: 'Home', img: 'self'}]
     },
     reducers: {
         pushSubReddit: (state, action) => {
@@ -25,8 +25,8 @@ export const pushSubReddit = subRedditsSlice.actions
 export const selectSubReddits = (state) => state.allSubReddits
 export default subRedditsSlice.reducer
 
-//^ This is an ASYNC Thunk that fetches the popular subreddits and puts them into an array for mapping into
-//^     the subReddits side section on the page
+//^ This is an ASYNC Thunk that fetches the active reddit posts and puts them into an array for 
+//^     mapping into the posts section on the page
 export const fetchSubReddits = createAsyncThunk('fetch/subReddits', async () => {
     const response = await fetch('https://www.reddit.com/r/popular.json')
     const jsonResponse = await response.json()
@@ -35,8 +35,8 @@ export const fetchSubReddits = createAsyncThunk('fetch/subReddits', async () => 
     const names = dataList.map((reddit) => {
         // console.log(reddit)
         return {
-            'name': reddit.data.subreddit,
-            'img': reddit.data.thumbnail
+            name: reddit.data.subreddit,
+            img: reddit.data.thumbnail
         }
     })
     return names
