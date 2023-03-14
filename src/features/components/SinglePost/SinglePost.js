@@ -1,8 +1,10 @@
 import './singlePost.css'
 import { BiUpArrow, BiDownArrow } from 'react-icons/bi'
 import { TiMessage } from 'react-icons/ti'
+import { useEffect, useState } from 'react'
 
 const SinglePost = (props) => {
+    const [time, setTime] = useState()
     let imgCheck = props.img
     if (imgCheck.includes('jpg') || imgCheck.includes('png') || imgCheck.includes('jpeg') || imgCheck.includes('gif')) {
         imgCheck = props.img
@@ -20,6 +22,29 @@ const SinglePost = (props) => {
         e.target.closest('div').children[1].style.color = 'black'
     }
 
+    //^ This take the props.timeAgo 10 digit timestamp and calc hour many days/hours ago it was posted
+    useEffect(() => {
+        const curDate = new Date()
+        const date = new Date(props.timeAgo * 1000)
+        const daysAgo = curDate.getDate() - date.getDate()
+        const hoursAgo = (curDate.getHours() - date.getHours())
+        let output = (daysAgo * 24) + hoursAgo
+
+        if(daysAgo > 1) {
+            output = `${daysAgo} days ago`
+        } else if(daysAgo === 1) {
+            output = `${daysAgo} day ago`
+        } else if(hoursAgo > 1) {
+            output = `${hoursAgo} hours ago`
+        } else {
+            output = `${hoursAgo} hour ago`
+        }
+        setTime(output)
+    },[])
+
+    //^ Guard clause for if the timeAgo is outputting negative values
+    if (time < 1) return
+
     return (
         <section className='post'>
             <div className='votes'>
@@ -36,7 +61,7 @@ const SinglePost = (props) => {
                 <div className='border-line'/>
                 <div className='post-information'>
                     <p className='author'>{props.author}</p>
-                    <p className='time-ago'>{props.timeAgo} HOURS AGO</p>
+                    <p className='time-ago'>{time}</p>
                     <div className='comment-icon-section'>
                         <TiMessage className='message-icon'/>
                         <span>{props.comments}</span>

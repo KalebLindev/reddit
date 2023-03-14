@@ -10,7 +10,7 @@ const PostsSection = () => {
         <section className='post-section'>
             {filteredPosts.map((post, index) => {
                 return (
-                    <SinglePost title={post.title} text={post.text} img={post.img} author={post.author} timeAgo={post.timeAgo} comments={post.comments} upVotes={post.upVotes} downVotes={post.downVotes} key={index}/>
+                    <SinglePost title={post.title} text={post.text} img={post.img} author={post.author} timeAgo={post.timeSince} comments={post.comments} upVotes={post.upVotes} downVotes={post.downVotes} key={index}/>
                 )
             })}
 
