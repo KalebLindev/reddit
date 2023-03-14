@@ -22,7 +22,6 @@ const SingleSubReddit = (props) => {
         dispatch(fetchActiveRedditPosts(props.name))
         // console.log(`adding class to ${e.target.innerHTML}`)
         target.classList.add('active-reddit')
-
     }
 
     if(props.name === 'Home') {

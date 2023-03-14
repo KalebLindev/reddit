@@ -1,18 +1,37 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk, current } from '@reduxjs/toolkit'
 
 
 export const activeRedditPostsSlice = createSlice({
     name: 'activeRedditPosts',
     initialState: {
-        posts: []
+        posts: [],
+        filteredPosts: []
     },
     reducers: {
         loadActiveRedditPost: (state, action) => {
             // console.log(action.payload)
             state.posts.push(action.payload)
+            // state.filteredPosts.push(action.payload)
         },
         clearPosts: (state) => {
             state.posts = []
+            state.filteredPosts = []
+        },
+        filterFromSearch: (state, action) => {
+            const data = current(state.posts)
+            const userInput = action.payload.toLowerCase()
+            if(action.payload.length < 1) state.filteredPosts = data
+            state.filteredPosts = data.filter(post => {
+                const postTitle = post.title.toLowerCase()
+                const postText = post.text.toLowerCase()
+                
+                //^ These check if the title or the text of the post are in the UserSearchBar
+                if(postTitle.toLowerCase().includes(userInput)) {
+                    return postTitle.toLowerCase().includes(userInput)  
+                } else if(postText.toLowerCase().includes(userInput)) {
+                    return postText.toLowerCase().includes(userInput)
+                } else return
+            })   
         }
     },
     extraReducers: (builder) => {
@@ -20,11 +39,12 @@ export const activeRedditPostsSlice = createSlice({
             // console.log(action.payload)
             //^ Using forEach to get single push values for the subReddits state array
             action.payload.forEach(each => state.posts.push(each))
+            action.payload.forEach(each => state.filteredPosts.push(each))
         })
     }
 })
 
-export const {loadActiveRedditPost, clearPosts} = activeRedditPostsSlice.actions
+export const {loadActiveRedditPost, clearPosts, filterFromSearch} = activeRedditPostsSlice.actions
 export const selectActiveRedditPosts = (state) => state.activeRedditPosts
 export default activeRedditPostsSlice.reducer
 
