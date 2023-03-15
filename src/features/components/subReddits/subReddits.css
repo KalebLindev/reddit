@@ -29,7 +29,7 @@
     left: -350px;
 }
 
-@media only screen and (min-width: 668px) {
+@media only screen and (min-width: 350px) {
     .subreddits-container {
         display: none;
     }
@@ -50,7 +50,7 @@
     .mobile-subreddits-container {
         display: none;
         position: relative;
-        left: -350px;
+        left: -350px
     }
 }
 
