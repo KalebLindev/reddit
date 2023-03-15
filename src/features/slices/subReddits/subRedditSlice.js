@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk, current } from '@reduxjs/toolkit'
 
 
 export const subRedditsSlice = createSlice({
@@ -8,15 +8,21 @@ export const subRedditsSlice = createSlice({
     },
     reducers: {
         pushSubReddit: (state, action) => {
-            // console.log(action.payload)
+            console.log(action.payload)
             state.subReddits.push(action.payload)
-        }
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(fetchSubReddits.fulfilled, (state, action) => {
             // console.log(action.payload)
+            const checkAgainst = []
             //^ Using forEach to get single push values for the subReddits state array
-            action.payload.forEach(each => state.subReddits.push(each))
+            action.payload.forEach(each => {
+                //^ If the subReddit is already inside the state, skip it and add the next. Total ends with top 25 subReddits
+                if(checkAgainst.some(one => one.name === each.name )) return
+                checkAgainst.push(each)
+                state.subReddits.push(each)
+            })
         })
     }
 })
@@ -28,6 +34,7 @@ export default subRedditsSlice.reducer
 //^ This is an ASYNC Thunk that fetches the active reddit posts and puts them into an array for 
 //^     mapping into the posts section on the page
 export const fetchSubReddits = createAsyncThunk('fetch/subReddits', async () => {
+    // console.log('triggered')
     //https://cors-anywhere.herokuapp.com/
     const response = await fetch('https://www.reddit.com/r/popular.json')
     // console.log(response)
