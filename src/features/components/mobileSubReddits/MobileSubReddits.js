@@ -1,11 +1,11 @@
-import './subReddits.css'
+import '../subReddits/subReddits.css'
 import SingleSubReddit from '../singleSubReddit/SingleSubReddit'
 import { fetchSubReddits, selectSubReddits } from '../../slices/subReddits/subRedditSlice'
 import { fetchActiveRedditPosts } from '../../slices/postsSlice/postsSlice'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-const SubReddits = () => {
+const MobileSubReddits = () => {
     const dispatch = useDispatch()
     let fetchCount = 0
     let postsCount = 0
@@ -25,8 +25,8 @@ const SubReddits = () => {
     }, [])
 
     return (
-        <div className='subreddits-container'>
-            <section className='subreddits-section'>
+        <div className='mobile-subreddits-container'>
+            <section className='mobile-subreddits-section'>
                 <h2>SUBREDDITS</h2>
                 {subReddits.map((each, index) => {
                     return <SingleSubReddit name={each.name} img={each.img} key={index}/>
@@ -36,13 +36,13 @@ const SubReddits = () => {
     )
 }
 
-export default SubReddits
+export default MobileSubReddits
 
 export const toggleModal = () => {
     const target = document.querySelector('.mobile-subreddits-container')
-    target.style.left = target.style.left === '15px'  ? '-350px' : '15px'
-    document.querySelector('.post-section').addEventListener('click', () => {
-        target.style.left = '-350px'
-    })
+    target.style.display = 'block'
+    setTimeout(() => {
+        target.style.left = target.style.left === '15px'  ? '-350px' : '15px'
+    }, 100)
     }
     

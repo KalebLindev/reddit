@@ -28,12 +28,14 @@ export default subRedditsSlice.reducer
 //^ This is an ASYNC Thunk that fetches the active reddit posts and puts them into an array for 
 //^     mapping into the posts section on the page
 export const fetchSubReddits = createAsyncThunk('fetch/subReddits', async () => {
+    //https://cors-anywhere.herokuapp.com/
     const response = await fetch('https://www.reddit.com/r/popular.json')
+    // console.log(response)
     const jsonResponse = await response.json()
     const data = jsonResponse.data
     const dataList = data.children
     const names = dataList.map((reddit) => {
-        console.log(reddit)
+        // console.log(reddit)
         return {
             name: reddit.data.subreddit,
             img: reddit.data.thumbnail

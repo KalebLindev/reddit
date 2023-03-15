@@ -1,20 +1,19 @@
-.subreddits-container {
+.subreddits-container, .mobile-subreddits-container {
     background-color: rgb(255, 255, 255);
     box-shadow: 0 .5rem .5rem rgb(227, 227, 227);
     flex-grow: .3;
     flex-shrink: 0;
-    /* height: 40rem; */
     border-radius: .25rem;
     min-width: 338.961px;;
     position: relative;
 }
 
-.subreddits-section h2 {
+.subreddits-section h2, .mobile-subreddits-section h2 {
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
 
-.subreddits-section {
+.subreddits-section, .mobile-subreddits-section{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -23,13 +22,22 @@
     margin: 0 auto;
 }
 
+.mobile-subreddits-container {
+    display: none;
+    transition: left linear .3s;
+    position: absolute;
+    left: -350px;
+}
 
 @media only screen and (min-width: 668px) {
     .subreddits-container {
         display: none;
+    }
+
+    .mobile-subreddits-container {
+        display: block;
         position: absolute;
         left: -350px;
-        transition: left linear .3s;
     }
 }
 
@@ -37,6 +45,12 @@
     .subreddits-container {
         display: none;
         height: 1800px;
+    }
+
+    .mobile-subreddits-container {
+        display: none;
+        position: relative;
+        left: -350px;
     }
 }
 
@@ -46,5 +60,11 @@
         position: relative;
         left: 0;
         transition: 0s;
+    }
+
+    .mobile-subreddits-container {
+        display: none;
+        position: absolute;
+        left: -350px;
     }
 }
