@@ -91,3 +91,15 @@
     width: 1.5rem;
     height: 1.5rem;
 }
+
+@media only screen and (min-width: 375px) and (max-width: 667px) {
+    .votes {
+        display: none;
+    }
+    .post-information {
+        display: none;
+    }
+    .border-line {
+        display: none
+    }
+}
